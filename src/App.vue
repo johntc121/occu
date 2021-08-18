@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Navbar />
-    <h1>hewllo</h1>
     <router-view></router-view>
 
   </div>
