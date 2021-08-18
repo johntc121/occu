@@ -1,8 +1,8 @@
 <template>
   <div class="item">
-      <span class="itemDetails">{{this.item.name}}</span>
-      <span class="itemDetails">{{this.item.details}}</span>
-      <span class="itemDetails">{{this.item.completedBy}}</span>
+      <span class="itemDetails">{{this.item.course}}</span>
+      <span class="itemDetails">{{this.item.studentID}}</span>
+      <span class="itemDetails">{{this.item.studentName}}</span>
       <span :style="[this.item.status == 'Fail' ? {'color': 'red'} : this.item.status == 'Warn' ? {'color': 'yellow'} : {'color': 'green'}]" class="itemDetails">{{this.item.status}}</span>
       <span>
         <button v-b-modal:[`edit-modal-${index}`]>Edit</button>
@@ -13,9 +13,9 @@
       <div>
         <b-modal :id="`edit-modal-${index}`" title="BootstrapVue">
           <form @submit="editItem">
-              <input v-model="name">
-              <input v-model="details">
-              <input v-model="completedBy">
+              <input v-model="course">
+              <input v-model="studentID">
+              <input v-model="studentName">
               <select v-model="status">
                   <option value='Fail'>Fail</option>
                   <option value='Warn'>Warn</option>
@@ -34,9 +34,9 @@ export default {
   props: ['item', 'index'],
   data() {
       return {
-          name: this.item.name,
-          details: this.item.details,
-          completedBy: this.item.completedBy,
+          course: this.item.course,
+          studentID: this.item.studentID,
+          studentName: this.item.studentName,
           status: this.item.status,
           data: [],
       }
@@ -49,9 +49,9 @@ export default {
         
       const newData = {
         id: this.item.id,
-        name: this.name,
-        details: this.details,
-        completedBy: this.completedBy,
+        course: this.course,
+        studentID: this.studentID,
+        studentName: this.studentName,
         status: this.status
       };
 
@@ -65,13 +65,13 @@ export default {
       const newID = this.$uuid.v4();
       const data = {
         id: newID,
-        name: this.name,
-        details: this.details,
-        completedBy: this.completedBy,
+        course: this.course,
+        studentID: this.studentID,
+        studentName: this.studentName,
         status: this.status
       }
-      console.log(data);
-      //this.$store.commit('addItem', data);
+      
+      this.$store.commit('addData', data);
     }
   }
 }

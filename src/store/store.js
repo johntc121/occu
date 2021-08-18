@@ -6,22 +6,7 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        data: [
-            {
-              id: 1,
-              name: "Work",
-              details: "Go to Work",
-              completedBy: "John",
-              status: "Passed",
-            },
-            {
-              id: 2,
-              name: "Clean",
-              details: "Clean building",
-              completedBy: "Bob",
-              status: "Warn",
-            }
-        ],
+        data: [],
 
         filteredList: []
     },
@@ -41,7 +26,7 @@ export const store = new Vuex.Store({
           state.data.splice(i, 1);
 
           state.data.filter(function(elem){
-            if(elem.completedBy.includes(payload)){
+            if(elem.studentName.includes(payload)){
               const j = state.filteredList.map(item => item.id).indexOf(payload.id);
               state.filteredList.splice(j, 1);
             }
@@ -57,15 +42,15 @@ export const store = new Vuex.Store({
           const i = state.data.map(item => item.id).indexOf(payload.id);
           console.log(i);
           console.log(state.data[i])
-          state.data[i].name = payload.name;
-          state.data[i].details = payload.details;
-          state.data[i].completedBy = payload.completedBy;
+          state.data[i].course = payload.course;
+          state.data[i].studentID = payload.studentID;
+          state.data[i].studentName = payload.studentName;
           state.data[i].status = payload.status;
         },
 
         searchData(state, payload){
           state.data.filter(function(elem){
-            if(elem.completedBy.includes(payload)){
+            if(elem.studentName.includes(payload)){
               state.filteredList.push(elem);
             }
           })

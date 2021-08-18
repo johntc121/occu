@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="search">
-      <input type="text" v-model='search' v-on:input="searchList" placeholder="Search By Completed By...">
+      <input type="text" v-model='search' v-on:input="searchList" placeholder="Search By Student Name...">
     </div>
     
     <div class="form">
       <div class="dataForm">
           <form @submit="addData">
-              <input type="text" class= "formText" v-model="name" placeholder="Name..."><br>
-              <input type="text" class= "formText" v-model="details" placeholder="Details..."><br>
-              <input type="text" class= "formText" v-model="completedBy" placeholder="Completed By..."><br>
+              <input type="text" class= "formText" v-model="course" placeholder="Course..."><br>
+              <input type="text" class= "formText" v-model="studentID" placeholder="StudentID..."><br>
+              <input type="text" class= "formText" v-model="studentName" placeholder="Student Name..."><br>
               
               <select class="select" v-model="status">
                   <option disabled value="">Please select a status</option>
@@ -45,9 +45,9 @@ export default {
   data() {
       return {
           search: '',
-          name: '',
-          details: '',
-          completedBy: '',
+          course: '',
+          studentID: '',
+          studentName: '',
           status: '',
           data: [],
           uuid: uuid.v1(),
@@ -64,18 +64,18 @@ export default {
         const newID = this.$uuid.v4();
         const newData = {
           id: newID,
-          name: this.name,
-          details: this.details,
-          completedBy: this.completedBy,
+          course: this.course,
+          studentID: this.studentID,
+          studentName: this.studentName,
           status: this.status
         };
         
 
         this.$store.commit('addData', newData);
         
-        this.name = '';
-        this.details = '';
-        this.completedBy = '';
+        this.course = '';
+        this.studentID = '';
+        this.studentName = '';
         this.status = '';
 
         //e.target.reset();
