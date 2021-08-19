@@ -7,11 +7,11 @@
     <div class="form">
       <div class="dataForm">
           <form @submit="addData">
-              <input type="text" class= "formText" v-model="course" placeholder="Course..."><br>
-              <input type="text" class= "formText" v-model="studentID" placeholder="StudentID..."><br>
-              <input type="text" class= "formText" v-model="studentName" placeholder="Student Name..."><br>
+              <input required type="text" class= "formText" v-model="course" placeholder="Course..."><br>
+              <input required type="text" class= "formText" v-model="studentID" placeholder="StudentID..."><br>
+              <input required type="text" class= "formText" v-model="studentName" placeholder="Student Name..."><br>
               
-              <select class="select" v-model="status">
+              <select required class="select" v-model="status">
                   <option disabled value="">Please select a status</option>
                   <option>Fail</option>
                   <option>Warn</option>

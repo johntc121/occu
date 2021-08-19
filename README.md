@@ -20,6 +20,7 @@ npm run serve
 - Web App is built with Vue JS.
 - Uses Vuex for store/statemangement.
 - Uses Vue Persisted Storage to keep local storage of device.
+- Bootstrapvue and vanila CSS used for styling.
 
 ### Guide
 
