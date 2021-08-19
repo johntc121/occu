@@ -42,6 +42,7 @@ export const store = new Vuex.Store({
           const i = state.data.map(item => item.id).indexOf(payload.id);
           console.log(i);
           console.log(state.data[i])
+          state.data[i].updatedAt = new Date().toLocaleString();
           state.data[i].course = payload.course;
           state.data[i].studentID = payload.studentID;
           state.data[i].studentName = payload.studentName;

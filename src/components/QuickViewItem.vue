@@ -2,6 +2,7 @@
   <div class="item">
       <span class="itemDetails">{{this.item.studentName}}</span>
       <span :style="[this.item.status == 'Fail' ? {'color': 'red'} : this.item.status == 'Warn' ? {'color': 'yellow'} : {'color': 'green'}]" class="itemDetails">{{this.item.status}}</span>
+      <span>Last Updated At: {{this.item.updatedAt}}</span>
       
   </div>
 </template>

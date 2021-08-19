@@ -45,6 +45,7 @@ export default {
   data() {
       return {
           search: '',
+          updatedAt: '',
           course: '',
           studentID: '',
           studentName: '',
@@ -64,6 +65,7 @@ export default {
         const newID = this.$uuid.v4();
         const newData = {
           id: newID,
+          updatedAt: new Date().toLocaleString(),
           course: this.course,
           studentID: this.studentID,
           studentName: this.studentName,

@@ -3,6 +3,7 @@
       <span class="itemDetails">{{this.item.course}}</span>
       <span class="itemDetails">{{this.item.studentID}}</span>
       <span class="itemDetails">{{this.item.studentName}}</span>
+      <span class="itemDetails">{{this.item.updatedAt}}</span>
       <span :style="[this.item.status == 'Fail' ? {'color': 'red'} : this.item.status == 'Warn' ? {'color': 'yellow'} : {'color': 'green'}]" class="itemDetails">{{this.item.status}}</span>
       <span>
         <button v-b-modal:[`edit-modal-${index}`]>Edit</button>
@@ -11,7 +12,7 @@
       </span>
 
       <div>
-        <b-modal :id="`edit-modal-${index}`" title="BootstrapVue">
+        <b-modal :id="`edit-modal-${index}`" hide-footer>
           <form @submit="editItem">
               <input v-model="course">
               <input v-model="studentID">
@@ -34,6 +35,7 @@ export default {
   props: ['item', 'index'],
   data() {
       return {
+          updatedAt: this.item.updatedAt,
           course: this.item.course,
           studentID: this.item.studentID,
           studentName: this.item.studentName,
@@ -49,6 +51,7 @@ export default {
         
       const newData = {
         id: this.item.id,
+        updatedAt: this.updatedAt,
         course: this.course,
         studentID: this.studentID,
         studentName: this.studentName,
@@ -65,6 +68,7 @@ export default {
       const newID = this.$uuid.v4();
       const data = {
         id: newID,
+        updatedAt: this.updatedAt,
         course: this.course,
         studentID: this.studentID,
         studentName: this.studentName,
@@ -85,8 +89,6 @@ export default {
     align-content: center;
     align-items: center;
     justify-content: space-around;
-
-    
   }
 
   .itemDetails {
