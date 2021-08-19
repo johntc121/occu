@@ -22,7 +22,7 @@
                   <option value='Warn'>Warn</option>
                   <option value='Pass'>Pass</option>
               </select><br>
-              <input type="submit" value="Submit" @click="$bvModal.hide('modal-1')">
+              <input type="submit" value="Submit" @click="$bvModal.hide(`edit-modal-${index}`)">
           </form>
         </b-modal>
       </div>
